@@ -42,6 +42,12 @@ def login2():
 def hello2(name=None):
     return render_template('hello.html', name=name)
     
+@app.route('/login3', methods=['GET', 'POST'])
+def login3():
+    if request.method == 'POST':
+        return "User %s logged in" % request.form['username']
+    return render_template('login.html')
+    
 if __name__ == '__main__':
     host = os.getenv('IP', '0.0.0.0') # only needed in cloud 9
     port = int(os.getenv('PORT', 5000)) # only needed in cloud 9

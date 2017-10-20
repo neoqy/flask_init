@@ -1,11 +1,18 @@
 import os # only needed in cloud 9
 
-from flask import Flask, url_for
+from flask import Flask, url_for, request
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return 'Index Page'
+
+@app.route('/login', methods=['GET'])
+def login():
+    if request.values:
+        return 'username is ' + request.values["username"]
+    else:
+        return '<form method="get" action="/login"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
 
 @app.route('/username/<username>')
 def show_user_profile(username):

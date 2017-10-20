@@ -14,6 +14,13 @@ def login():
     else:
         return '<form method="get" action="/login"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
 
+@app.route('/login2', methods=['GET', 'POST'])
+def login2():
+    if request.method == 'POST':
+        return 'username is ' + request.values["username"]
+    else:
+        return '<form method="post" action="/login2"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
+
 @app.route('/username/<username>')
 def show_user_profile(username):
     return 'User ' + str(username)

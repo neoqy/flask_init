@@ -23,27 +23,27 @@ def show_post(post_id):
 def show_url():
     return url_for('show_user_profile', username='Ouyang')
 
-@app.route('/login', methods=['GET'])
-def login():
+@app.route('/login_with_get', methods=['GET'])
+def login_with_get():
     if request.values:
         return 'username is ' + request.values["username"]
     else:
-        return '<form method="get" action="/login"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
+        return '<form method="get" action="/login_with_get"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
 
-@app.route('/login2', methods=['GET', 'POST'])
-def login2():
+@app.route('/login_with_post', methods=['GET', 'POST'])
+def login_with_post():
     if request.method == 'POST':
         return 'username is ' + request.values["username"]
     else:
-        return '<form method="post" action="/login2"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
+        return '<form method="post" action="/login_with_post"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
     
-@app.route('/hello2')
-@app.route('/hello2/<name>')
-def hello2(name=None):
+@app.route('/hello_with_template')
+@app.route('/hello_with_template/<name>')
+def hello_with_template(name=None):
     return render_template('hello.html', name=name)
     
-@app.route('/login3', methods=['GET', 'POST'])
-def login3():
+@app.route('/login_with_template', methods=['GET', 'POST'])
+def login_with_template():
     if request.method == 'POST':
         return "User %s logged in" % request.form['username']
     return render_template('login.html')
